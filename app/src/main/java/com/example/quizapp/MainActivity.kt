@@ -1,5 +1,6 @@
 package com.example.quizapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -12,11 +13,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val button :Button = findViewById(R.id.button)
-        val et_name : EditText = findViewById(R.id.et_name)
+        val etName : EditText = findViewById(R.id.et_name)
         button.setOnClickListener {
 
-            if (et_name.text.isEmpty()){
+            if (etName.text.isEmpty()){
                 Toast.makeText(this, "Please enter your name", Toast.LENGTH_LONG).show()
+            }
+            else{
+                val intent = Intent(this, QuizQuestionActivity::class.java)
+                startActivity(intent)
+                finish()
             }
         }
     }
